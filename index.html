@@ -83,17 +83,16 @@ h3 { font-weight: 600; font-size: var(--t-body); line-height: 1.35; margin: 0; }
 .prose p { margin: 0 0 1em; }
 
 /* About */
-.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 48px; align-items: start; }
+.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; align-items: start; }
 .statement { font-size: var(--t-lead); line-height: 1.55; border-left: 2px solid var(--accent); padding-left: 20px; margin-bottom: 1.25em !important; }
 .axial { margin: 0; }
 .axial svg { width: 100%; height: auto; display: block; }
 .axial .b { fill: var(--surface); stroke: var(--ink); stroke-width: 1.3; stroke-linejoin: round; }
-.axial .ring { fill: none; stroke: var(--muted); stroke-width: 0.8; stroke-dasharray: 2 3; }
-.axial .joint { stroke: var(--ink); stroke-width: 1; }
+.axial .facet { fill: none; stroke: var(--accent); stroke-width: 2.6; stroke-linecap: round; }
 .axial .sac { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.4; }
-.axial .roots circle, .axial .drg { fill: var(--accent); }
-.axial .nerve { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linecap: round; }
-.axial .lbl text { font-family: var(--font-body); font-size: 11px; fill: var(--muted); }
+.axial .roots circle, .axial .root { fill: var(--accent); }
+.axial .sleeve { stroke: var(--accent); stroke-width: 2.6; stroke-linecap: round; }
+.axial .lbl text { font-family: var(--font-body); font-size: 12px; fill: var(--muted); }
 .axial .lbl path { stroke: var(--muted); stroke-width: 0.7; fill: none; }
 .axial figcaption { font-size: var(--t-label); color: var(--muted); text-align: center; margin-top: 8px; }
 
@@ -161,7 +160,7 @@ footer .foot-text { display: grid; gap: 2px; text-align: right; }
   .index { display: none; }
   .people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .join, .about-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .axial { max-width: 300px; margin: 0 auto; }
+  .axial { max-width: 340px; margin: 0 auto; }
 }
 @media (max-width: 560px) {
   .mast .logo { height: 64px; }
@@ -231,26 +230,26 @@ footer .foot-text { display: grid; gap: 2px; text-align: right; }
           <p>The laboratory was previously led by Jared Fridley, MD, who is now at the University of Texas at Austin. Dr. Rahul A. Sastry assumed leadership in 2026. Members include neurosurgery residents, research staff, and medical students who work on retrospective cohort studies, database analyses, and case reports.</p>
           </div>
           <figure class="axial">
-            <svg viewBox="0 0 320 262" role="img" aria-labelledby="axial-cap">
-              <g transform="translate(10 0)">
-                <path class="b" d="M95,85 C90,45 115,30 150,30 C185,30 210,45 205,85 C200,105 180,108 165,104 C158,102 142,102 135,104 C120,108 100,105 95,85 Z"/>
-                <path class="ring" d="M108,72 C108,50 125,42 150,42 C175,42 192,50 192,72"/>
-                <path class="b" d="M112,98 L126,102 L124,132 L108,130 Z M188,98 L174,102 L176,132 L192,130 Z"/>
-                <path class="b" d="M108,116 L62,110 L58,123 L108,131 Z M192,116 L238,110 L242,123 L192,131 Z"/>
-                <path class="b" d="M108,130 L102,152 L130,182 L138,224 L162,224 L170,182 L198,152 L192,130 L176,132 L162,160 L150,166 L138,160 L124,132 Z"/>
-                <circle class="b" cx="104" cy="152" r="9"/><circle class="b" cx="196" cy="152" r="9"/>
-                <path class="joint" d="M97,146 L111,158 M203,146 L189,158"/>
-                <ellipse class="sac" cx="150" cy="133" rx="20" ry="17"/>
-                <g class="roots"><circle cx="142" cy="140" r="2"/><circle cx="150" cy="143" r="2"/><circle cx="158" cy="140" r="2"/><circle cx="145" cy="132" r="2"/><circle cx="155" cy="132" r="2"/><circle cx="139" cy="128" r="1.7"/><circle cx="161" cy="128" r="1.7"/></g>
-                <path class="nerve" d="M133,125 Q114,112 96,101 M167,125 Q186,112 204,101"/>
-                <circle class="drg" cx="93" cy="99" r="5"/><circle class="drg" cx="207" cy="99" r="5"/>
-              </g>
+            <svg viewBox="0 0 340 282" role="img" aria-labelledby="axial-cap">
+              <path class="b" d="M120,113 L66,115 L62,127 L119,129 Z M200,113 L254,115 L258,127 L201,129 Z"/>
+              <path class="b" d="M120,104 L138,108 L137,136 L119,136 Z M200,104 L182,108 L183,136 L201,136 Z"/>
+              <path class="b" d="M122,136 L134,182 L149,196 L150,250 L170,250 L171,196 L186,182 L198,136 L183,136 L160,172 L137,136 Z"/>
+              <path class="b" d="M114,131 C96,135 87,156 95,179 C101,157 112,144 131,140 C128,134 121,130 114,131 Z M206,131 C224,135 233,156 225,179 C219,157 208,144 189,140 C192,134 199,130 206,131 Z"/>
+              <path class="facet" d="M95,179 C101,157 112,144 131,140 M225,179 C219,157 208,144 189,140"/>
+              <path class="b" d="M100,92 C96,52 124,34 160,34 C196,34 224,52 220,92 C217,108 200,112 186,108 C176,105 144,105 134,108 C120,112 103,108 100,92 Z"/>
+              <ellipse class="sac" cx="160" cy="136" rx="17" ry="14"/>
+              <g class="roots"><circle cx="152" cy="140" r="1.8"/><circle cx="160" cy="143" r="1.8"/><circle cx="168" cy="140" r="1.8"/><circle cx="155" cy="132" r="1.8"/><circle cx="165" cy="132" r="1.8"/></g>
+              <path class="sleeve" d="M149,126 L145,119 M171,126 L175,119"/>
+              <circle class="root" cx="143" cy="116" r="4.2"/><circle class="root" cx="177" cy="116" r="4.2"/>
               <g class="lbl">
-                <text x="232" y="34">Vertebral body</text><path d="M230,38 L205,56"/>
-                <text x="4" y="90">Nerve root</text><path d="M62,94 L97,99"/>
-                <text x="4" y="174">Facet joint</text><path d="M66,170 L106,156"/>
-                <text x="232" y="196">Thecal sac</text><path d="M230,192 L176,143"/>
-                <text x="178" y="252">Spinous process</text><path d="M176,248 L167,226"/>
+                <text x="236" y="40">Vertebral body</text><path d="M234,44 L208,60"/>
+                <text x="8" y="96">Pedicle</text><path d="M54,97 L126,110"/>
+                <text x="236" y="104">Nerve root</text><path d="M234,106 L182,116"/>
+                <text x="8" y="210">Transverse process</text><path d="M44,198 L72,128"/>
+                <text x="236" y="166">Articular facet</text><path d="M234,163 L219,158"/>
+                <text x="8" y="252">Lamina</text><path d="M48,247 L142,180"/>
+                <text x="236" y="214">Thecal sac</text><path d="M234,209 L172,143"/>
+                <text x="178" y="272">Spinous process</text><path d="M176,267 L166,251"/>
               </g>
             </svg>
             <figcaption id="axial-cap">Axial view of a lumbar vertebra</figcaption>
