@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spinal Surgery Outcomes Laboratory</title>
+<meta name="description" content="The Spinal Surgery Outcomes Laboratory in the Department of Neurosurgery at Brown University studies how spinal surgical procedures and disease management strategies affect patient outcomes.">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Libre+Franklin:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column beside a sticky section index; the hero carries a lateral spinal column drawn from real vertebral levels. */
+:root {
+  --bg: #f5f2ef; --surface: #fffdfb; --ink: #231a18; --muted: #6b5c57; --rule: #e2d9d3; --accent: #7a2a26; --accent-soft: #f1e1de; --mark: #8a5a12; --mark-soft: #f3e7d2;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #161110; --surface: #201918; --ink: #efe6e2; --muted: #ab9a94; --rule: #352a28; --accent: #de9289; --accent-soft: #3a2321; --mark: #d9a85c; --mark-soft: #33281a; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg: #161110; --surface: #201918; --ink: #efe6e2; --muted: #ab9a94; --rule: #352a28; --accent: #de9289; --accent-soft: #3a2321; --mark: #d9a85c; --mark-soft: #33281a; color-scheme: dark; }
+
+/* Typeface pairings, chosen with the type selector */
+:root { --font-display: "Cormorant Garamond", Garamond, "Times New Roman", serif; --font-body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif; --display-weight: 600; --display-stretch: 100%; --h2-stretch: 100%; }
+.sel { user-select: all; font-family: var(--font-mono); font-size: 0.86em; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Draft notice */
+.draft {
+  background: var(--mark-soft);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink);
+}
+.draft .wrap { padding-block: 10px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.draft strong { color: var(--mark); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; }
+
+.ph {
+  background: var(--mark-soft);
+  color: var(--mark);
+  border-bottom: 1px dashed var(--mark);
+  padding: 0 3px;
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+
+/* Masthead */
+.mast { border-bottom: 1px solid var(--rule); }
+.mast .wrap { padding-block: 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.dept { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.mast nav { display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--font-display); font-size: 0.92rem; font-weight: 500; }
+.mast nav a { color: var(--ink); text-decoration: none; }
+.mast nav a:hover { color: var(--accent); }
+
+/* Hero */
+.hero .wrap {
+  padding-block: 56px 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  gap: 48px;
+  align-items: center;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-weight: var(--display-weight);
+  font-size: clamp(2.5rem, 7vw, 4.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  margin: 0 0 22px;
+  text-wrap: balance;
+}
+.hero h1 span { color: var(--accent); }
+.hero p.lede { font-size: 1.22rem; line-height: 1.5; max-width: 34em; margin: 0 0 26px; color: var(--ink); }
+.hero .meta { display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+.hero .meta b { color: var(--ink); font-weight: 500; }
+
+/* Spinal column figure */
+.figure { margin: 0; width: 180px; height: 440px; }
+.figure canvas { display: block; width: 100%; height: 100%; }
+
+/* Body layout */
+.body .wrap {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 56px;
+  padding-block: 24px 80px;
+}
+.index { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; }
+.index ol { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 6px; }
+.index ol::before { /* spinal cord running behind the posterior elements */
+  content: ""; position: absolute; left: 30px; top: -6px; bottom: -6px; width: 2px;
+  background: var(--accent); opacity: 0.35; border-radius: 2px;
+}
+.index li { position: relative; }
+.index li + li::before { /* intervertebral disc */
+  content: ""; position: absolute; left: 3px; top: -5px; width: 18px; height: 4px;
+  border-radius: 2px; background: var(--accent); opacity: 0.25;
+}
+.index li a {
+  display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: center;
+  padding: 2px 0;
+  font-family: var(--font-display); font-size: 1rem; font-weight: 600;
+  color: var(--muted); text-decoration: none;
+}
+.vert { position: relative; width: 24px; height: 16px; border: 1.5px solid var(--muted); border-radius: 4px 4px 3px 3px; background: var(--surface); }
+.vert::after { /* spinous process */
+  content: ""; position: absolute; left: 25px; top: 4px; width: 11px; height: 6px;
+  border: 1.5px solid var(--muted); border-radius: 1px 4px 4px 1px; background: var(--surface);
+  transform: skewY(18deg);
+}
+.index li a:hover { color: var(--ink); }
+.index li a:hover .vert, .index li a:hover .vert::after { border-color: var(--ink); }
+.index li a.on { color: var(--ink); }
+.index li a.on .vert, .index li a.on .vert::after { border-color: var(--accent); background: var(--accent); }
+
+section { padding-block: 40px; border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
+section:first-child { border-top: 0; padding-top: 16px; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
+.eyebrow { display: flex; align-items: center; gap: 8px; }
+.eyebrow::before {
+  content: ""; width: 15px; height: 15px; flex: none;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2016%2016%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.4%27%20stroke-linecap%3D%27round%27%3E%3Cellipse%20cx%3D%278%27%20cy%3D%274.6%27%20rx%3D%275%27%20ry%3D%273%27/%3E%3Ccircle%20cx%3D%278%27%20cy%3D%2710.3%27%20r%3D%272.2%27/%3E%3Cpath%20d%3D%27M5.9%209.5%201.6%2011.2M10.1%209.5%2014.4%2011.2M8%2012.5V15.2%27/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2016%2016%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.4%27%20stroke-linecap%3D%27round%27%3E%3Cellipse%20cx%3D%278%27%20cy%3D%274.6%27%20rx%3D%275%27%20ry%3D%273%27/%3E%3Ccircle%20cx%3D%278%27%20cy%3D%2710.3%27%20r%3D%272.2%27/%3E%3Cpath%20d%3D%27M5.9%209.5%201.6%2011.2M10.1%209.5%2014.4%2011.2M8%2012.5V15.2%27/%3E%3C/svg%3E") center / contain no-repeat;
+}
+h2 {
+  font-family: var(--font-display); font-stretch: var(--h2-stretch); font-weight: 700;
+  font-size: clamp(1.7rem, 3.4vw, 2.3rem); line-height: 1.1; margin: 0 0 18px; text-wrap: balance;
+}
+h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 0 0 6px; line-height: 1.3; }
+.prose { max-width: 40em; }
+.prose p { margin: 0 0 1em; }
+
+
+/* About: mission beside an axial cross-section */
+.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 36px; align-items: start; }
+.axial { margin: 0; }
+.axial svg { width: 100%; height: auto; display: block; }
+.axial .b { fill: var(--surface); stroke: var(--ink); stroke-width: 1.3; stroke-linejoin: round; }
+.axial .ring { fill: none; stroke: var(--muted); stroke-width: 0.8; stroke-dasharray: 2 3; }
+.axial .joint { stroke: var(--ink); stroke-width: 1; }
+.axial .sac { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.4; }
+.axial .roots circle { fill: var(--accent); }
+.axial .nerve { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linecap: round; }
+.axial .drg { fill: var(--accent); }
+.axial .lbl text { font-family: var(--font-mono); font-size: 10.5px; fill: var(--muted); }
+.axial .lbl path { stroke: var(--muted); stroke-width: 0.7; fill: none; }
+.axial figcaption { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); text-align: center; margin-top: 6px; }
+/* Research areas */
+.statement { font-size: 1.2rem; line-height: 1.55; border-left: 3px solid var(--accent); padding-left: 18px; margin-bottom: 1.2em !important; }
+ul.areas { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0 32px; border-top: 1px solid var(--rule); }
+ul.areas li { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+/* legacy area cards */
+.areas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin-top: 28px; border-top: 1px solid var(--rule); }
+.area { padding: 22px 24px 22px 0; border-bottom: 1px solid var(--rule); min-width: 0; }
+.area:nth-child(odd) { border-right: 1px solid var(--rule); }
+.area:nth-child(even) { padding-left: 24px; padding-right: 0; }
+.area p { margin: 0 0 10px; font-size: 0.98rem; color: var(--ink); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { font-family: var(--font-mono); font-size: 0.72rem; padding: 2px 8px; border-radius: 3px; background: var(--accent-soft); color: var(--accent); }
+
+
+ul.areas li { display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+.area-name { min-width: 0; }
+.legend { font-size: 0.92rem; color: var(--muted); margin: -6px 0 14px; }
+.legend b { font-family: var(--font-mono); font-weight: 500; color: var(--accent); }
+.regions { display: inline-grid; grid-template-columns: 7fr 12fr 5fr 5fr; gap: 2px; width: 104px; flex: none; }
+.regions span { display: grid; gap: 3px; justify-items: center; }
+.regions span::before { content: ""; width: 100%; height: 6px; border-radius: 2px; background: var(--rule); }
+.regions span.on::before { background: var(--accent); }
+.regions span i { font-style: normal; font-family: var(--font-mono); font-size: 0.62rem; line-height: 1; color: var(--muted); }
+.regions span.on i { color: var(--accent); }
+.pub .regions { margin-top: 10px; }
+
+/* People */
+.director {
+  display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 24px;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 26px; margin-bottom: 30px;
+}
+.avatar {
+  width: 96px; height: 96px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent-soft); color: var(--accent);
+  font-family: var(--font-display); font-stretch: 80%; font-weight: 700; font-size: 1.9rem;
+}
+.role { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.director p { margin: 0 0 10px; font-size: 0.98rem; }
+.director dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 16px; margin: 14px 0 0; font-size: 0.92rem; }
+.director dt { font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); padding-top: 3px; }
+.director dd { margin: 0; }
+
+.group-label { font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; color: var(--muted); margin: 26px 0 12px; }
+.people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.person { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+.person .avatar { width: 44px; height: 44px; font-size: 0.95rem; }
+.person h3 { font-size: 1rem; margin: 0; }
+.person .role { margin: 2px 0 0; font-size: 0.68rem; }
+
+/* Publications */
+.pubs { list-style: none; margin: 0; padding: 0; counter-reset: pub; }
+.pub { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.pub:first-child { border-top: 1px solid var(--rule); }
+.status { font-family: var(--font-mono); font-size: 0.72rem; align-self: start; padding: 3px 8px; border-radius: 3px; text-align: center; }
+.status.rev { background: var(--mark-soft); color: var(--mark); }
+.status.pub-d { background: var(--accent-soft); color: var(--accent); }
+.pub h3 { font-family: var(--font-body); font-weight: 600; font-size: 1.04rem; }
+.pub .auth { font-size: 0.93rem; color: var(--muted); margin: 0; }
+.pub .auth b { color: var(--ink); font-weight: 600; }
+.pub .venue { font-style: italic; font-size: 0.93rem; margin: 2px 0 0; }
+
+/* Join and contact */
+.join { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 36px; }
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 0.98rem; }
+.steps li::before { content: counter(s); font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); padding-top: 3px; }
+.contact { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 22px; align-self: start; }
+.contact dl { margin: 0; display: grid; gap: 14px; }
+.contact dt { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.contact dd { margin: 2px 0 0; font-size: 0.97rem; }
+
+
+
+footer { border-top: 1px solid var(--rule); }
+footer .wrap { padding-block: 22px 40px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 36px 28px; }
+  .figure { width: 100%; height: 132px; }
+  .body .wrap { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .index { display: none; }
+  .people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .join { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .axial { max-width: 320px; margin: 0 auto; }
+}
+@media (max-width: 560px) {
+  .areas { grid-template-columns: 1fr; }
+  .area, .area:nth-child(even) { padding: 18px 0; border-right: 0; }
+  .area:nth-child(odd) { border-right: 0; }
+  .people { grid-template-columns: 1fr; }
+  .director { grid-template-columns: 1fr; padding: 20px; }
+  .pub { grid-template-columns: 1fr; gap: 8px; }
+  .status { justify-self: start; }
+  .mast nav { gap: 14px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+</style>
+</head>
+<body>
+
+<div class="draft">
+  <div class="wrap">
+    <strong>Draft</strong>
+    <span>Highlighted items in brackets need confirmation before this page is shared.</span>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="dept">Department of Neurosurgery · Brown University</div>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#people">People</a>
+      <a href="#publications">Publications</a>
+      <a href="#join">Join</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Spinal Surgery <span>Outcomes Laboratory</span></h1>
+      <p class="lede">Understanding spinal surgical procedures and disease management strategies to improve patient clinical outcomes.</p>
+      <div class="meta">
+        <span><b>Principal investigator</b> Rahul A. Sastry, MD, MPH</span>
+        <span><b>Former principal investigator</b> Jared Fridley, MD</span>
+        <span><b>Based at</b> Providence, Rhode Island</span>
+      </div>
+    </div>
+    <figure class="figure" aria-label="Lateral view of the spinal column with the spinal cord and cauda equina"><canvas id="spine"></canvas></figure>
+  </div>
+</div>
+
+<div class="body">
+  <div class="wrap">
+    <aside class="index" aria-label="On this page">
+      <ol>
+        <li><a href="#about"><i class="vert" aria-hidden="true"></i>About</a></li>
+        <li><a href="#research"><i class="vert" aria-hidden="true"></i>Research</a></li>
+        <li><a href="#people"><i class="vert" aria-hidden="true"></i>People</a></li>
+        <li><a href="#publications"><i class="vert" aria-hidden="true"></i>Publications</a></li>
+        <li><a href="#join"><i class="vert" aria-hidden="true"></i>Join and contact</a></li>
+      </ol>
+    </aside>
+
+    <main>
+      <section id="about">
+        <p class="eyebrow">About the lab</p>
+        <h2>Mission</h2>
+        <div class="about-grid">
+          <div class="prose">
+          <p class="statement">The Spinal Surgery Outcomes Laboratory seeks to understand how various spinal surgical procedures and disease management strategies affect patient clinical outcomes. By applying statistical methodologies to large patient data sets we hope to discover novel findings that help advance spine surgery clinical practice and improve patient outcomes.</p>
+          <p>The laboratory was previously led by Jared Fridley, MD, who is now at the University of Texas at Austin. Dr. Rahul A. Sastry assumed leadership in 2026, and the lab met for the first time under his direction in October 2026. Members include neurosurgery residents, research staff, and medical students who work on retrospective cohort studies, database analyses, and case reports.</p>
+          </div>
+          <figure class="axial">
+            <svg viewBox="0 0 320 262" role="img" aria-labelledby="axial-cap">
+              <g transform="translate(10 0)">
+                <path class="b" d="M95,85 C90,45 115,30 150,30 C185,30 210,45 205,85 C200,105 180,108 165,104 C158,102 142,102 135,104 C120,108 100,105 95,85 Z"/>
+                <path class="ring" d="M108,72 C108,50 125,42 150,42 C175,42 192,50 192,72"/>
+                <path class="b" d="M112,98 L126,102 L124,132 L108,130 Z M188,98 L174,102 L176,132 L192,130 Z"/>
+                <path class="b" d="M108,116 L62,110 L58,123 L108,131 Z M192,116 L238,110 L242,123 L192,131 Z"/>
+                <path class="b" d="M108,130 L102,152 L130,182 L138,224 L162,224 L170,182 L198,152 L192,130 L176,132 L162,160 L150,166 L138,160 L124,132 Z"/>
+                <circle class="b" cx="104" cy="152" r="9"/><circle class="b" cx="196" cy="152" r="9"/>
+                <path class="joint" d="M97,146 L111,158 M203,146 L189,158"/>
+                <ellipse class="sac" cx="150" cy="133" rx="20" ry="17"/>
+                <g class="roots"><circle cx="142" cy="140" r="2"/><circle cx="150" cy="143" r="2"/><circle cx="158" cy="140" r="2"/><circle cx="145" cy="132" r="2"/><circle cx="155" cy="132" r="2"/><circle cx="139" cy="128" r="1.7"/><circle cx="161" cy="128" r="1.7"/></g>
+                <path class="nerve" d="M133,125 Q114,112 96,101 M167,125 Q186,112 204,101"/>
+                <circle class="drg" cx="93" cy="99" r="5"/><circle class="drg" cx="207" cy="99" r="5"/>
+              </g>
+              <g class="lbl">
+                <text x="232" y="34">Vertebral body</text><path d="M230,38 L205,56"/>
+                <text x="4" y="90">Nerve root</text><path d="M62,94 L97,99"/>
+                <text x="4" y="174">Facet joint</text><path d="M66,170 L106,156"/>
+                <text x="232" y="196">Thecal sac</text><path d="M230,192 L176,143"/>
+                <text x="178" y="252">Spinous process</text><path d="M176,248 L167,226"/>
+              </g>
+            </svg>
+            <figcaption id="axial-cap">Axial view of a lumbar vertebra</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="research">
+        <p class="eyebrow">Research</p>
+        <h2>Current research areas</h2>
+        <p class="legend">Each area shows the spinal regions it most often involves: <b>C</b> cervical, <b>T</b> thoracic, <b>L</b> lumbar, <b>S</b> sacral.</p>
+        <ul class="areas">
+          <li><span class="area-name">Minimally invasive spine surgery</span><span class="regions" data-r="CTL"></span></li>
+          <li><span class="area-name">Endoscopic spine surgery</span><span class="regions" data-r="CL"></span></li>
+          <li><span class="area-name">Spinal trauma</span><span class="regions" data-r="CTL"></span></li>
+          <li><span class="area-name">Spinal tumors</span><span class="regions" data-r="CTLS"></span></li>
+          <li><span class="area-name">Spinal infections</span><span class="regions" data-r="CTL"></span></li>
+          <li><span class="area-name">Spinal deformity</span><span class="regions" data-r="TL"></span></li>
+          <li><span class="area-name">Degenerative spinal disease</span><span class="regions" data-r="CL"></span></li>
+        </ul>
+      </section>
+
+      <section id="people">
+        <p class="eyebrow">People</p>
+        <h2>Members</h2>
+
+        <div class="director">
+          <div class="avatar">RS</div>
+          <div>
+            <h3>Rahul A. Sastry, MD, MPH</h3>
+            <p class="role">Principal Investigator · Attending Neurosurgeon <span class="ph">[academic title]</span></p>
+            <p>Dr. Sastry is a neurosurgeon at Brown University Health specializing in complex spine surgery. He completed his neurosurgery residency at Brown University and Rhode Island Hospital, followed by a fellowship in complex spine surgery at the University of California, San Francisco. His research focuses on clinical outcomes, health systems research, and international neurotrauma and neurosurgery.</p>
+            <dl>
+              <dt>Fellowship</dt><dd>Complex Spine Surgery, University of California, San Francisco</dd>
+              <dt>Residency</dt><dd>Neurosurgery, Brown University and Rhode Island Hospital</dd>
+              <dt>Internship</dt><dd>General Surgery, Brigham and Women's Hospital</dd>
+              <dt>MPH</dt><dd>Johns Hopkins Bloomberg School of Public Health</dd>
+              <dt>MD</dt><dd>Harvard Medical School</dd>
+              <dt>BS</dt><dd>Stanford University</dd>
+            </dl>
+          </div>
+        </div>
+
+        <p class="group-label">Program administration</p>
+        <div class="people">
+          <div class="person"><div class="avatar">OL</div><div><h3>Owen Leary</h3><p class="role">MD/PhD Student · Program Administrator</p></div></div>
+        </div>
+
+        <p class="group-label">Clinical research assistants</p>
+        <div class="people">
+          <div class="person"><div class="avatar">CP</div><div><h3>Carlos Ponce de Leon Mendez</h3><p class="role">Clinical Research Assistant · Neurosurgery</p></div></div>
+          <div class="person"><div class="avatar">AO</div><div><h3>Anasemi Owate-Chujor</h3><p class="role">Clinical Research Assistant · Neurosurgery</p></div></div>
+          <div class="person"><div class="avatar">JO</div><div><h3>Joseph Osagie</h3><p class="role">Clinical Research Assistant · Neurosurgery</p></div></div>
+        </div>
+
+        <p class="group-label">Faculty investigators and collaborators</p>
+        <div class="people">
+          <div class="person"><div class="avatar">AO</div><div><h3>Adetokunbo Oyelese, MD, PhD</h3><p class="role">Director, Spine Division · Neurosurgery</p></div></div>
+          <div class="person"><div class="avatar">PS</div><div><h3>Patricia Sullivan, MD</h3><p class="role">Director, Spine Tumor Lab · Neurosurgery</p></div></div>
+          <div class="person"><div class="avatar">TN</div><div><h3>Tianyi (Tim) Niu, MD</h3><p class="role">Spine Faculty · Neurosurgery</p></div></div>
+          <div class="person"><div class="avatar">AW</div><div><h3>Albert Woo, MD</h3><p class="role">Plastic and Reconstructive Surgery</p></div></div>
+          <div class="person"><div class="avatar">JF</div><div><h3>Jared Fridley, MD</h3><p class="role">Former Principal Investigator · UT Austin</p></div></div>
+        </div>
+
+        <p class="group-label">Residents</p>
+        <div class="people">
+          <div class="person"><div class="avatar">CC</div><div><h3>Carlin Chuck, MD</h3><p class="role">Neurosurgery Resident</p></div></div>
+        </div>
+
+        <p class="group-label">Students</p>
+        <div class="people">
+          <div class="person"><div class="avatar">WD</div><div><h3>Wes de Lomba</h3><p class="role">M4 · Warren Alpert Medical School</p></div></div>
+          <div class="person"><div class="avatar">MT</div><div><h3>Mazen Taman</h3><p class="role">M4 · Warren Alpert Medical School</p></div></div>
+          <div class="person"><div class="avatar">MD</div><div><h3>Mikhaila Doyle</h3><p class="role">M2 · Warren Alpert Medical School</p></div></div>
+          <div class="person"><div class="avatar">AA</div><div><h3>Akshay Amesur</h3><p class="role">M2 · Warren Alpert Medical School</p></div></div>
+          <div class="person"><div class="avatar">AH</div><div><h3>Amanda Hasbrouck</h3><p class="role">M1 · Johns Hopkins School of Medicine</p></div></div>
+          <div class="person"><div class="avatar">LN</div><div><h3>Lilly Nguyen</h3><p class="role">M1 · Warren Alpert Medical School</p></div></div>
+          <div class="person"><div class="avatar">RD</div><div><h3>Rafael Davis</h3><p class="role">M1 · Warren Alpert Medical School</p></div></div>
+          <div class="person"><div class="avatar">ES</div><div><h3>Edward Shen</h3><p class="role">M1 · Warren Alpert Medical School</p></div></div>
+          <div class="person"><div class="avatar">MR</div><div><h3>Mahir Rahman</h3><p class="role">M1 · Warren Alpert Medical School</p></div></div>
+          <div class="person"><div class="avatar">PJ</div><div><h3>Peter Jackson</h3><p class="role">M1 · Warren Alpert Medical School</p></div></div>
+          <div class="person"><div class="avatar">OT</div><div><h3>Owen Traylor</h3><p class="role">M1 · Warren Alpert Medical School</p></div></div>
+          <div class="person"><div class="avatar">KY</div><div><h3>Keertana Yalamanchili</h3><p class="role">M1 · Warren Alpert Medical School</p></div></div>
+          <div class="person"><div class="avatar">HK</div><div><h3>Helen D. Kim</h3><p class="role">M1 · Warren Alpert Medical School</p></div></div>
+        </div>
+
+        <p class="group-label">Undergraduate interns</p>
+        <div class="people">
+          <div class="person"><div class="avatar">NR</div><div><h3>Navin Ramesh</h3><p class="role">Undergraduate Intern</p></div></div>
+          <div class="person"><div class="avatar">VX</div><div><h3>Valerie Xu</h3><p class="role">Undergraduate Intern</p></div></div>
+          <div class="person"><div class="avatar">P</div><div><h3>Pavitra <span class="ph">[last name]</span></h3><p class="role">Undergraduate Intern</p></div></div>
+        </div>
+
+        <p class="group-label">Additional members <span class="ph">[confirm roles]</span></p>
+        <div class="people">
+          <div class="person"><div class="avatar">SS</div><div><h3>Sumaiya Sayeed</h3><p class="role"><span class="ph">[role]</span></p></div></div>
+        </div>
+      </section>
+
+      <section id="publications">
+        <p class="eyebrow">Publications</p>
+        <h2>Work from the lab</h2>
+        <div class="prose"><p>Lab members are shown in bold. <span class="ph">[placeholder entry; add the lab's publications]</span></p></div>
+        <ol class="pubs">
+          <li class="pub">
+            <span class="status pub-d">Published</span>
+            <div>
+              <h3>The Importance of Incisional Management Strategies to Optimize Outcomes in Spine Surgery</h3>
+              <p class="auth">Mueller KB, <b>Sastry RA</b>.</p>
+              <p class="venue"><span class="ph">[journal, year, DOI]</span></p>
+              <span class="regions" data-r="CTL"></span>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="join">
+        <p class="eyebrow">Join and contact</p>
+        <h2>Working with the lab</h2>
+        <div class="join">
+          <div>
+            <div class="prose">
+              <p>We welcome Brown medical students and undergraduates who want hands-on experience in clinical outcomes research.</p>
+            </div>
+            <ol class="steps">
+              <li>Contact.</li>
+              <li>Complete CITI human subjects training and request access to the IRB system before starting on any patient data.</li>
+              <li>Attend a lab meeting.</li>
+            </ol>
+          </div>
+          <aside class="contact">
+            <dl>
+              <div><dt>Principal investigator</dt><dd>Rahul A. Sastry, MD, MPH</dd></div>
+              <div><dt>Lab meetings</dt><dd><span class="ph">[day and time]</span></dd></div>
+              <div><dt>Mailing address</dt><dd>Department of Neurosurgery<br>593 Eddy Street, APC 6<br>Providence, RI 02903</dd></div>
+              <div><dt>Members</dt><dd>Current members coordinate through the lab's Slack workspace.</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Spinal Surgery Outcomes Laboratory · Department of Neurosurgery</span>
+    <span>Last updated October 2026</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Lateral spinal column: vertebral bodies, discs, posterior elements,
+  // spinal cord to the conus at L1, cauda equina, and sacrum. Anterior is to the left.
+  var cv = document.getElementById('spine');
+  if (cv && cv.getContext) {
+    var ctx = cv.getContext('2d');
+    var root = document.documentElement;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var narrowMQ = window.matchMedia('(max-width: 860px)');
+    var FW = 170, FH = 430;
+    var lv = [], i, y = 16, gap = 3.2;
+    for (i = 2; i <= 7; i++) lv.push({ n: 'C' + i, h: 8.5, w: 15 + (i - 2) * 0.6 });
+    for (i = 1; i <= 12; i++) lv.push({ n: 'T' + i, h: 10 + (i - 1) * 0.32, w: 18 + (i - 1) * 0.65 });
+    for (i = 1; i <= 5; i++) lv.push({ n: 'L' + i, h: 15 + (i - 1) * 0.5, w: 27 + (i - 1) * 1 });
+    lv.forEach(function (l) { l.yc = y + l.h / 2; y += l.h + gap; });
+    var spineEnd = y, sacTop = y + 1;
+    function bulge(yy) {
+      var t = (yy - 16) / (spineEnd - 16);
+      if (t < 0.27) return 9 * Math.sin(Math.PI * t / 0.27);
+      if (t < 0.70) return -13 * Math.sin(Math.PI * (t - 0.27) / 0.43);
+      return 12 * Math.sin(Math.PI * Math.min(1, (t - 0.70) / 0.33));
+    }
+    function cx(yy) { return 98 - bulge(yy); }
+    lv.forEach(function (l) {
+      var dx = (cx(l.yc + 1) - cx(l.yc - 1)) / 2;
+      var len = Math.sqrt(dx * dx + 1);
+      l.c = [cx(l.yc), l.yc];
+      l.d = [dx / len, 1 / len];
+      l.p = [l.d[1], -l.d[0]];
+    });
+    function pt(l, a, b) { return [l.c[0] + l.p[0] * a + l.d[0] * b, l.c[1] + l.p[1] * a + l.d[1] * b]; }
+
+    var S = 1, OX = 0, OY = 0, horiz = false;
+    function tf(q) { return horiz ? [OX + q[1] * S, OY + (FW - q[0]) * S] : [OX + q[0] * S, OY + q[1] * S]; }
+    function poly(pts) { ctx.beginPath(); pts.forEach(function (q, k) { var t = tf(q); if (k) ctx.lineTo(t[0], t[1]); else ctx.moveTo(t[0], t[1]); }); ctx.closePath(); }
+    function line(pts) { ctx.beginPath(); pts.forEach(function (q, k) { var t = tf(q); if (k) ctx.lineTo(t[0], t[1]); else ctx.moveTo(t[0], t[1]); }); }
+
+    // Spinal cord path down to the conus, then cauda equina strands.
+    var cord = [[cx(4) + 0, 4]];
+    lv.forEach(function (l) { cord.push(pt(l, l.w / 2 + 2.6, 0)); });
+    var conusIdx = 18 + 1; // L1 is the 19th level
+    var cordMain = cord.slice(0, conusIdx + 1);
+    var cauda = [];
+    for (var k = -2; k <= 2; k++) {
+      var strand = [];
+      for (i = 18; i < lv.length; i++) strand.push(pt(lv[i], lv[i].w / 2 + 2.6 + k * 0.9 * ((i - 18) / 4), 0));
+      strand.push([cx(spineEnd) + 18 + k * 2.2, sacTop + 10]);
+      cauda.push(strand);
+    }
+    var cum = [0];
+    for (i = 1; i < cordMain.length; i++) {
+      var ax = cordMain[i][0] - cordMain[i - 1][0], ay = cordMain[i][1] - cordMain[i - 1][1];
+      cum.push(cum[i - 1] + Math.sqrt(ax * ax + ay * ay));
+    }
+    function along(u) {
+      var target = u * cum[cum.length - 1];
+      for (var j = 1; j < cum.length; j++) if (cum[j] >= target) {
+        var f = (target - cum[j - 1]) / (cum[j] - cum[j - 1] || 1);
+        return [cordMain[j - 1][0] + (cordMain[j][0] - cordMain[j - 1][0]) * f, cordMain[j - 1][1] + (cordMain[j][1] - cordMain[j - 1][1]) * f];
+      }
+      return cordMain[cordMain.length - 1];
+    }
+
+    function size() {
+      var r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+      cv.width = Math.max(1, Math.round(r.width * dpr));
+      cv.height = Math.max(1, Math.round(r.height * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      horiz = narrowMQ.matches;
+      var lw = horiz ? FH : FW, lh = horiz ? FW : FH;
+      S = Math.min(r.width / lw, r.height / lh);
+      OX = (r.width - lw * S) / 2; OY = (r.height - lh * S) / 2;
+      return r;
+    }
+    var box = size();
+    window.addEventListener('resize', function () { box = size(); });
+
+    function draw(ts) {
+      var cs = getComputedStyle(root);
+      var ink = cs.getPropertyValue('--ink').trim(), accent = cs.getPropertyValue('--accent').trim(),
+          muted = cs.getPropertyValue('--muted').trim(), surface = cs.getPropertyValue('--surface').trim(),
+          soft = cs.getPropertyValue('--accent-soft').trim();
+      ctx.clearRect(0, 0, box.width, box.height);
+      ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+
+      // Discs
+      for (i = 0; i < lv.length - 1; i++) {
+        var a = lv[i], b = lv[i + 1];
+        poly([pt(a, -a.w / 2 + 1, a.h / 2), pt(a, a.w / 2 - 1, a.h / 2), pt(b, b.w / 2 - 1, -b.h / 2), pt(b, -b.w / 2 + 1, -b.h / 2)]);
+        ctx.fillStyle = accent; ctx.globalAlpha = 0.3; ctx.fill(); ctx.globalAlpha = 1;
+      }
+      // Posterior elements: pedicle, lamina and spinous process
+      lv.forEach(function (l) {
+        var reg = l.n.charAt(0);
+        var sp = reg === 'C' ? 8 : reg === 'T' ? 11 : 13;
+        var drop = reg === 'C' ? 0.5 : reg === 'T' ? 1.5 : 0.45;
+        var base = l.w / 2 + 5.2;
+        ctx.strokeStyle = muted; ctx.lineWidth = 1 * S;
+        line([pt(l, l.w / 2, -l.h * 0.28), pt(l, base, -l.h * 0.34)]); ctx.stroke();
+        poly([pt(l, base, -l.h * 0.4), pt(l, base + sp, l.h * drop), pt(l, base + sp - 1.5, l.h * drop + 2), pt(l, base, l.h * 0.28)]);
+        ctx.fillStyle = surface; ctx.fill(); ctx.stroke();
+      });
+      // Vertebral bodies
+      lv.forEach(function (l) {
+        poly([pt(l, -l.w / 2, -l.h / 2), pt(l, l.w / 2, -l.h / 2), pt(l, l.w / 2, l.h / 2), pt(l, -l.w / 2, l.h / 2)]);
+        ctx.fillStyle = surface; ctx.fill();
+        ctx.strokeStyle = ink; ctx.lineWidth = 1.1 * S; ctx.stroke();
+      });
+      // Sacrum and coccyx
+      var last = lv[lv.length - 1];
+      var t0 = [cx(spineEnd) - 2, sacTop + 2], ds = [0.52, 0.85], ps = [0.85, -0.52];
+      function sq(a, b) { return [t0[0] + ps[0] * a + ds[0] * b, t0[1] + ps[1] * a + ds[1] * b]; }
+      poly([sq(-16, 0), sq(16, 0), sq(10, 24), sq(3, 42), sq(-3, 42), sq(-13, 22)]);
+      ctx.fillStyle = surface; ctx.fill(); ctx.strokeStyle = ink; ctx.lineWidth = 1.1 * S; ctx.stroke();
+      ctx.strokeStyle = muted; ctx.lineWidth = 0.7 * S;
+      [9, 18, 27, 35].forEach(function (b) { var hw = 14 - b * 0.28; line([sq(-hw, b), sq(hw, b)]); ctx.stroke(); });
+      line([sq(0, 44), sq(1, 50), sq(3, 55)]); ctx.lineWidth = 2 * S; ctx.strokeStyle = muted; ctx.stroke();
+
+      // Cauda equina
+      ctx.strokeStyle = accent; ctx.globalAlpha = 0.55; ctx.lineWidth = 0.7 * S;
+      cauda.forEach(function (st) { line(st); ctx.stroke(); });
+      ctx.globalAlpha = 1;
+      // Spinal cord
+      line(cordMain); ctx.strokeStyle = accent; ctx.lineWidth = 2.4 * S; ctx.stroke();
+      // Root sleeves at each foramen
+      ctx.fillStyle = accent;
+      for (i = 0; i < 18; i++) {
+        var q = tf(pt(lv[i], lv[i].w / 2 + 2.6, lv[i].h / 2 + gap / 2));
+        ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.arc(q[0], q[1], 1.3 * S, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      // Signal traveling down the cord
+      if (!reduce && ts !== undefined) {
+        var cycle = 4200, travel = 2600, ph = ts % cycle;
+        if (ph < travel) {
+          var u = ph / travel, pos = tf(along(u));
+          var g = ctx.createRadialGradient(pos[0], pos[1], 0, pos[0], pos[1], 9 * S);
+          g.addColorStop(0, accent); g.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.globalAlpha = 0.45; ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(pos[0], pos[1], 9 * S, 0, Math.PI * 2); ctx.fill();
+          ctx.globalAlpha = 1; ctx.fillStyle = surface;
+          ctx.beginPath(); ctx.arc(pos[0], pos[1], 1.6 * S, 0, Math.PI * 2); ctx.fill();
+        }
+      }
+
+      // Level labels
+      ctx.fillStyle = muted;
+      ctx.font = Math.max(8, 9 * S) + 'px "IBM Plex Mono", ui-monospace, monospace';
+      ctx.textBaseline = 'middle'; ctx.textAlign = horiz ? 'center' : 'right';
+      var show = { C2: 1, C7: 1, T12: 1, L5: 1 };
+      lv.forEach(function (l) {
+        if (!show[l.n]) return;
+        var q = tf(pt(l, -l.w / 2 - (horiz ? 9 : 6), 0));
+        ctx.fillText(l.n, q[0], q[1]);
+      });
+      var sl = tf(sq(-22, 14)); ctx.fillText('S', sl[0], sl[1]);
+    }
+
+    if (reduce) {
+      draw();
+      root.addEventListener('click', function () { setTimeout(draw, 0); });
+      window.addEventListener('resize', function () { draw(); });
+    } else {
+      (function loop(ts) { draw(ts); requestAnimationFrame(loop); })(0);
+    }
+  }
+
+  var root = document.documentElement;
+
+  // Spinal region maps
+  Array.prototype.forEach.call(document.querySelectorAll('.regions'), function (el) {
+    var on = el.getAttribute('data-r') || '';
+    var names = { C: 'cervical', T: 'thoracic', L: 'lumbar', S: 'sacral' };
+    el.setAttribute('role', 'img');
+    el.setAttribute('aria-label', 'Spinal regions: ' + on.split('').map(function (c) { return names[c]; }).join(', '));
+    ['C', 'T', 'L', 'S'].forEach(function (c) {
+      var seg = document.createElement('span');
+      if (on.indexOf(c) >= 0) seg.className = 'on';
+      var t = document.createElement('i'); t.textContent = c; seg.appendChild(t);
+      el.appendChild(seg);
+    });
+  });
+
+  // Highlight the current section in the side index.
+  var links = Array.prototype.slice.call(document.querySelectorAll('.index a'));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    secs.forEach(function (s) { if (s) obs.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
