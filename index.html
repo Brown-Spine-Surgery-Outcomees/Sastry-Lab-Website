@@ -14,14 +14,14 @@
    Type: Cormorant Garamond for headings only; Libre Franklin for all other text.
    Scale (rem): 0.75 label, 0.875 small, 1 body, 1.1875 lead, 1.5 profile name, 2.25 section heading, 3.75 page title */
 :root {
-  --bg: #f5f2ef; --surface: #fffdfb; --ink: #231a18; --muted: #6b5c57; --rule: #e2d9d3; --accent: #7a2a26; --accent-soft: #f1e1de; --mark: #8a5a12; --mark-soft: #f3e7d2;
+  --bg: #ffffff; --surface: #faf7f6; --ink: #231a18; --muted: #675a56; --rule: #e8e2df; --accent: #a3161d; --accent-soft: #f5dfdd; --mark: #8a5a12; --mark-soft: #f3e7d2;
   --logo-bg: transparent;
   --font-display: "Cormorant Garamond", Garamond, "Times New Roman", serif;
   --font-body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
   --t-label: 0.75rem; --t-small: 0.875rem; --t-body: 1rem; --t-lead: 1.1875rem;
 }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #161110; --surface: #201918; --ink: #efe6e2; --muted: #ab9a94; --rule: #352a28; --accent: #de9289; --accent-soft: #3a2321; --mark: #d9a85c; --mark-soft: #33281a; --logo-bg: #fbf8f6; color-scheme: dark; } }
-:root[data-theme="dark"] { --bg: #161110; --surface: #201918; --ink: #efe6e2; --muted: #ab9a94; --rule: #352a28; --accent: #de9289; --accent-soft: #3a2321; --mark: #d9a85c; --mark-soft: #33281a; --logo-bg: #fbf8f6; color-scheme: dark; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #161110; --surface: #201918; --ink: #efe6e2; --muted: #ab9a94; --rule: #352a28; --accent: #ef8b85; --accent-soft: #3d1f1e; --mark: #d9a85c; --mark-soft: #33281a; --logo-bg: #fbf8f6; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg: #161110; --surface: #201918; --ink: #efe6e2; --muted: #ab9a94; --rule: #352a28; --accent: #ef8b85; --accent-soft: #3d1f1e; --mark: #d9a85c; --mark-soft: #33281a; --logo-bg: #fbf8f6; color-scheme: dark; }
 
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
@@ -83,18 +83,7 @@ h3 { font-weight: 600; font-size: var(--t-body); line-height: 1.35; margin: 0; }
 .prose p { margin: 0 0 1em; }
 
 /* About */
-.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; align-items: start; }
 .statement { font-size: var(--t-lead); line-height: 1.55; border-left: 2px solid var(--accent); padding-left: 20px; margin-bottom: 1.25em !important; }
-.axial { margin: 0; }
-.axial svg { width: 100%; height: auto; display: block; }
-.axial .b { fill: var(--surface); stroke: var(--ink); stroke-width: 1.3; stroke-linejoin: round; }
-.axial .facet { fill: none; stroke: var(--accent); stroke-width: 2.6; stroke-linecap: round; }
-.axial .sac { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.4; }
-.axial .roots circle, .axial .root { fill: var(--accent); }
-.axial .sleeve { stroke: var(--accent); stroke-width: 2.6; stroke-linecap: round; }
-.axial .lbl text { font-family: var(--font-body); font-size: 12px; fill: var(--muted); }
-.axial .lbl path { stroke: var(--muted); stroke-width: 0.7; fill: none; }
-.axial figcaption { font-size: var(--t-label); color: var(--muted); text-align: center; margin-top: 8px; }
 
 /* Research areas */
 .legend { font-size: var(--t-small); color: var(--muted); margin: -4px 0 18px; }
@@ -133,6 +122,9 @@ ul.areas li { display: flex; justify-content: space-between; align-items: center
 .status.rev { background: var(--mark-soft); color: var(--mark); }
 .status.pub-d { background: var(--accent-soft); color: var(--accent); }
 .pub h3 { margin-bottom: 4px; }
+.pub h3 a { color: var(--ink); text-decoration: none; }
+.pub h3 a:hover { color: var(--accent); text-decoration: underline; }
+.pub .venue a { color: var(--accent); font-style: normal; }
 .pub .auth { font-size: var(--t-small); color: var(--muted); margin: 0; }
 .pub .auth b { color: var(--ink); font-weight: 600; }
 .pub .venue { font-style: italic; font-size: var(--t-small); margin: 2px 0 0; }
@@ -159,9 +151,8 @@ footer .foot-text { display: grid; gap: 2px; text-align: right; }
   .body .wrap { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .index { display: none; }
   .people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .join, .about-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .axial { max-width: 340px; margin: 0 auto; }
-}
+  .join { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  }
 @media (max-width: 560px) {
   .mast .logo { height: 64px; }
   .people { grid-template-columns: minmax(0, 1fr); }
@@ -200,7 +191,6 @@ footer .foot-text { display: grid; gap: 2px; text-align: right; }
       <p class="lede">Understanding spinal surgical procedures and disease management strategies to improve patient clinical outcomes.</p>
       <div class="meta">
         <span><b>Principal investigator</b> Rahul A. Sastry, MD, MPH</span>
-        <span><b>Former principal investigator</b> Jared Fridley, MD</span>
         <span><b>Based at</b> Providence, Rhode Island</span>
       </div>
     </div>
@@ -224,36 +214,9 @@ footer .foot-text { display: grid; gap: 2px; text-align: right; }
       <section id="about">
         <p class="eyebrow">About the lab</p>
         <h2>Mission</h2>
-        <div class="about-grid">
-          <div class="prose">
+        <div class="prose">
           <p class="statement">The Spinal Surgery Outcomes Laboratory seeks to understand how various spinal surgical procedures and disease management strategies affect patient clinical outcomes. By applying statistical methodologies to large patient data sets we hope to discover novel findings that help advance spine surgery clinical practice and improve patient outcomes.</p>
-          <p>The laboratory was previously led by Jared Fridley, MD, who is now at the University of Texas at Austin. Dr. Rahul A. Sastry assumed leadership in 2026. Members include neurosurgery residents, research staff, and medical students who work on retrospective cohort studies, database analyses, and case reports.</p>
-          </div>
-          <figure class="axial">
-            <svg viewBox="0 0 340 282" role="img" aria-labelledby="axial-cap">
-              <path class="b" d="M120,113 L66,115 L62,127 L119,129 Z M200,113 L254,115 L258,127 L201,129 Z"/>
-              <path class="b" d="M120,104 L138,108 L137,136 L119,136 Z M200,104 L182,108 L183,136 L201,136 Z"/>
-              <path class="b" d="M122,136 L134,182 L149,196 L150,250 L170,250 L171,196 L186,182 L198,136 L183,136 L160,172 L137,136 Z"/>
-              <path class="b" d="M114,131 C96,135 87,156 95,179 C101,157 112,144 131,140 C128,134 121,130 114,131 Z M206,131 C224,135 233,156 225,179 C219,157 208,144 189,140 C192,134 199,130 206,131 Z"/>
-              <path class="facet" d="M95,179 C101,157 112,144 131,140 M225,179 C219,157 208,144 189,140"/>
-              <path class="b" d="M100,92 C96,52 124,34 160,34 C196,34 224,52 220,92 C217,108 200,112 186,108 C176,105 144,105 134,108 C120,112 103,108 100,92 Z"/>
-              <ellipse class="sac" cx="160" cy="136" rx="17" ry="14"/>
-              <g class="roots"><circle cx="152" cy="140" r="1.8"/><circle cx="160" cy="143" r="1.8"/><circle cx="168" cy="140" r="1.8"/><circle cx="155" cy="132" r="1.8"/><circle cx="165" cy="132" r="1.8"/></g>
-              <path class="sleeve" d="M149,126 L145,119 M171,126 L175,119"/>
-              <circle class="root" cx="143" cy="116" r="4.2"/><circle class="root" cx="177" cy="116" r="4.2"/>
-              <g class="lbl">
-                <text x="236" y="40">Vertebral body</text><path d="M234,44 L208,60"/>
-                <text x="8" y="96">Pedicle</text><path d="M54,97 L126,110"/>
-                <text x="236" y="104">Nerve root</text><path d="M234,106 L182,116"/>
-                <text x="8" y="210">Transverse process</text><path d="M44,198 L72,128"/>
-                <text x="236" y="166">Articular facet</text><path d="M234,163 L219,158"/>
-                <text x="8" y="252">Lamina</text><path d="M48,247 L142,180"/>
-                <text x="236" y="214">Thecal sac</text><path d="M234,209 L172,143"/>
-                <text x="178" y="272">Spinous process</text><path d="M176,267 L166,251"/>
-              </g>
-            </svg>
-            <figcaption id="axial-cap">Axial view of a lumbar vertebra</figcaption>
-          </figure>
+          <p>The laboratory is led by Rahul A. Sastry, MD, MPH, and collaborates with Jared Fridley, MD, of the University of Texas at Austin. Members include neurosurgery residents, research staff, and medical students who work on retrospective cohort studies, database analyses, and case reports.</p>
         </div>
       </section>
 
@@ -306,16 +269,17 @@ footer .foot-text { display: grid; gap: 2px; text-align: right; }
 
         <p class="group-label">Faculty investigators and collaborators</p>
         <div class="people">
-          <div class="person"><div class="avatar">AO</div><div><h3>Adetokunbo Oyelese, MD, PhD</h3><p class="role">Director, Spine Division · Neurosurgery</p></div></div>
-          <div class="person"><div class="avatar">PS</div><div><h3>Patricia Sullivan, MD</h3><p class="role">Director, Spine Tumor Lab · Neurosurgery</p></div></div>
-          <div class="person"><div class="avatar">TN</div><div><h3>Tianyi (Tim) Niu, MD</h3><p class="role">Spine Faculty · Neurosurgery</p></div></div>
-          <div class="person"><div class="avatar">AW</div><div><h3>Albert Woo, MD</h3><p class="role">Plastic and Reconstructive Surgery</p></div></div>
-          <div class="person"><div class="avatar">JF</div><div><h3>Jared Fridley, MD</h3><p class="role">Former Principal Investigator · UT Austin</p></div></div>
+          <div class="person"><div class="avatar">JF</div><div><h3>Jared Fridley, MD</h3><p class="role">Neurosurgery · University of Texas at Austin</p></div></div>
+          <div class="person"><div class="avatar">AO</div><div><h3>Adetokunbo Oyelese, MD, PhD</h3><p class="role">Neurosurgery · Brown University</p></div></div>
+          <div class="person"><div class="avatar">PS</div><div><h3>Patricia Sullivan, MD</h3><p class="role">Neurosurgery · Brown University</p></div></div>
+          <div class="person"><div class="avatar">TN</div><div><h3>Tianyi (Tim) Niu, MD</h3><p class="role">Neurosurgery · Brown University</p></div></div>
+          <div class="person"><div class="avatar">AW</div><div><h3>Albert Woo, MD</h3><p class="role">Plastic and Reconstructive Surgery · Brown University</p></div></div>
         </div>
 
         <p class="group-label">Residents</p>
         <div class="people">
-          <div class="person"><div class="avatar">CC</div><div><h3>Carlin Chuck, MD</h3><p class="role">Neurosurgery Resident</p></div></div>
+          <div class="person"><div class="avatar">CC</div><div><h3>Carlin Chuck, MD</h3><p class="role">Neurosurgery Resident · PGY-5</p></div></div>
+          <div class="person"><div class="avatar">SS</div><div><h3>Sumaiya Sayeed, MD</h3><p class="role">Neurosurgery Resident · PGY-2</p></div></div>
         </div>
 
         <p class="group-label">Members &amp; Interns</p>
@@ -335,23 +299,48 @@ footer .foot-text { display: grid; gap: 2px; text-align: right; }
           <div class="person"><div class="avatar">HK</div><div><h3>Helen D. Kim</h3><p class="role">M1 · Warren Alpert Medical School</p></div></div>
           <div class="person"><div class="avatar">NR</div><div><h3>Navin Ramesh</h3><p class="role">Undergraduate Intern</p></div></div>
           <div class="person"><div class="avatar">VX</div><div><h3>Valerie Xu</h3><p class="role">Undergraduate Intern</p></div></div>
-          <div class="person"><div class="avatar">P</div><div><h3>Pavitra <span class="ph">[last name]</span></h3><p class="role">Undergraduate Intern</p></div></div>
-          <div class="person"><div class="avatar">SS</div><div><h3>Sumaiya Sayeed</h3><p class="role"><span class="ph">[role]</span></p></div></div>
+          <div class="person"><div class="avatar">PS</div><div><h3>Pavitra Sreedhar</h3><p class="role">Undergraduate Intern</p></div></div>
         </div>
       </section>
 
       <section id="publications">
         <p class="eyebrow">Publications</p>
         <h2>Work from the lab</h2>
-        <div class="prose"><p>Lab members are shown in bold. <span class="ph">[placeholder entry; add the lab's publications]</span></p></div>
         <ol class="pubs">
           <li class="pub">
             <span class="status pub-d">Published</span>
             <div>
-              <h3>The Importance of Incisional Management Strategies to Optimize Outcomes in Spine Surgery</h3>
-              <p class="auth">Mueller KB, <b>Sastry RA</b>.</p>
-              <p class="venue"><span class="ph">[journal, year, DOI]</span></p>
+              <h3><a href="https://doi.org/10.3171/2026.3.SPINE251724">Spatiotemporal Gait Parameters Are Independently Associated With Disability at Presentation in Adult Spinal Deformity Patients</a></h3>
+              <p class="auth">Sastry RA, Semonche A, Grady C, Fu A, Azad TD, Scheer JK, Clark AJ, Deviren V, Ames CP.</p>
+              <p class="venue">Journal of Neurosurgery: Spine, 2026 · <a href="https://doi.org/10.3171/2026.3.SPINE251724">doi:10.3171/2026.3.SPINE251724</a></p>
+              <span class="regions" data-r="TL"></span>
+            </div>
+          </li>
+          <li class="pub">
+            <span class="status pub-d">Published</span>
+            <div>
+              <h3><a href="https://doi.org/10.14444/8866">Multilevel Lateral Lumbar Interbody Fusion for Symptomatic Spondylotic Stenosis and Severe Disc Degeneration Without Scoliosis: Single-Institutional Case Series and Lessons Learned</a></h3>
+              <p class="auth">Chatad D, DeLomba WC, Taman M, Leary OP, Syed S, Liu DD, Pertsch NJ, Cámara-Quintana JQ, Niu T, Gokaslan ZL, Telfeian AE, Oyelese AA, Fridley JS.</p>
+              <p class="venue">International Journal of Spine Surgery, 2026 · <a href="https://doi.org/10.14444/8866">doi:10.14444/8866</a></p>
+              <span class="regions" data-r="L"></span>
+            </div>
+          </li>
+          <li class="pub">
+            <span class="status pub-d">Published</span>
+            <div>
+              <h3><a href="https://doi.org/10.1177/2689288X251414776">The 5-Item Modified Frailty Index Aids in Predicting Risk of In-Hospital Complications Following Spine Trauma: A United States Nationwide Cohort Analysis of 356,583 Patients</a></h3>
+              <p class="auth">Porto C, Hagan MJ, Sastry R, Tang OY, Leary OP, Fridley JS.</p>
+              <p class="venue">Neurotrauma Reports, 2026; 7 · <a href="https://doi.org/10.1177/2689288X251414776">doi:10.1177/2689288X251414776</a></p>
               <span class="regions" data-r="CTL"></span>
+            </div>
+          </li>
+          <li class="pub">
+            <span class="status pub-d">Published</span>
+            <div>
+              <h3><a href="https://doi.org/10.1016/j.xnsj.2022.100176">Instrumentation Choice and Early Radiographic Outcome Following Lateral Lumbar Interbody Fusion (LLIF): Lateral Instrumentation Versus Posterior Pedicle Screw Fixation</a></h3>
+              <p class="auth">Nuss S, Leary OP, Zheng B, Darveau SC, Barrios-Anderson A, Niu T, Gokaslan ZL, Sampath P, Telfeian AE, Oyelese AA, Fridley JS.</p>
+              <p class="venue">North American Spine Society Journal, 2022; 12:100176 · <a href="https://doi.org/10.1016/j.xnsj.2022.100176">doi:10.1016/j.xnsj.2022.100176</a></p>
+              <span class="regions" data-r="L"></span>
             </div>
           </li>
         </ol>
@@ -361,20 +350,13 @@ footer .foot-text { display: grid; gap: 2px; text-align: right; }
         <p class="eyebrow">Join and contact</p>
         <h2>Working with the lab</h2>
         <div class="join">
-          <div>
-            <div class="prose">
-              <p>We welcome Brown medical students and undergraduates who want hands-on experience in clinical outcomes research.</p>
-            </div>
-            <ol class="steps">
-              <li>Contact.</li>
-              <li>Complete CITI human subjects training and request access to the IRB system before starting on any patient data.</li>
-              <li>Attend a lab meeting.</li>
-            </ol>
+          <div class="prose">
+            <p>To get involved, please reach out to join a lab meeting and begin onboarding, which includes completing CITI human subjects training and being added to the lab's IRB protocols.</p>
           </div>
           <aside class="contact">
             <dl>
               <div><dt>Principal investigator</dt><dd>Rahul A. Sastry, MD, MPH</dd></div>
-              <div><dt>Lab meetings</dt><dd><span class="ph">[day and time]</span></dd></div>
+              <div><dt>Lab meetings</dt><dd>Wednesdays at 6:00 PM, every other week</dd></div>
               <div><dt>Mailing address</dt><dd>Department of Neurosurgery<br>593 Eddy Street, APC 6<br>Providence, RI 02903</dd></div>
               <div><dt>Members</dt><dd>Current members coordinate through the lab's Slack workspace.</dd></div>
             </dl>
