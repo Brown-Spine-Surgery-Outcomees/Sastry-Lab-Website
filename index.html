@@ -137,7 +137,11 @@ section.centered { text-align: center; }
 section.centered .eyebrow { justify-content: center; }
 section.centered .join { grid-template-columns: minmax(0, 1fr); justify-items: center; }
 section.centered .contact { width: 100%; max-width: 440px; text-align: left; }
-.join-intro { max-width: 34em; margin: 0 auto 28px; }
+.join-intro { max-width: 34em; margin: 0 auto 20px; }
+.join-cta { margin: 0 0 32px; }
+.button { display: inline-block; background: var(--accent); color: var(--surface); font-weight: 600; font-size: var(--t-small); letter-spacing: 0.02em; padding: 12px 22px; border-radius: 4px; text-decoration: none; }
+.button:hover { filter: brightness(0.92); }
+.button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .steps { margin: 0; padding: 0; list-style: none; counter-reset: s; border-top: 1px solid var(--rule); }
 .steps li { counter-increment: s; display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--rule); }
 .steps li::before { content: counter(s); font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1; color: var(--accent); }
@@ -259,7 +263,8 @@ footer .foot-text { display: grid; gap: 2px; text-align: right; }
       <section id="join" class="centered">
         <p class="eyebrow">Join and contact</p>
         <h2>Working with the lab</h2>
-        <p class="join-intro">To get involved, please reach out to Rahul Sastry to discuss projects and onboarding.</p>
+        <p class="join-intro">To get involved, please join the lab's Slack workspace and reach out to Rahul Sastry to discuss projects and onboarding.</p>
+        <p class="join-cta"><a class="button" href="https://join.slack.com/t/brown-nsorg/shared_invite/zt-4esbpw6oi-ScefxVyIOgzID3neY3y9jg" target="_blank" rel="noopener">Join our Slack</a></p>
         <div class="join">
           <aside class="contact">
             <dl>
