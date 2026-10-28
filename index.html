@@ -136,7 +136,8 @@ img.avatar { object-fit: cover; }
 section.centered { text-align: center; }
 section.centered .eyebrow { justify-content: center; }
 section.centered .join { grid-template-columns: minmax(0, 1fr); justify-items: center; }
-section.centered .contact { width: 100%; max-width: 440px; }
+section.centered .contact { width: 100%; max-width: 440px; text-align: left; }
+.join-intro { max-width: 34em; margin: 0 auto 28px; }
 .steps { margin: 0; padding: 0; list-style: none; counter-reset: s; border-top: 1px solid var(--rule); }
 .steps li { counter-increment: s; display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--rule); }
 .steps li::before { content: counter(s); font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1; color: var(--accent); }
@@ -233,7 +234,8 @@ footer .foot-text { display: grid; gap: 2px; text-align: right; }
         <p class="eyebrow">About the lab</p>
         <h2>Mission</h2>
         <div class="prose">
-          <p class="statement">The Spinal Surgery Outcomes Laboratory seeks to understand how various spinal surgical procedures and disease management strategies affect patient clinical outcomes. By applying statistical methodologies to large patient data sets we hope to discover novel findings that help advance spine surgery clinical practice and improve patient outcomes.</p>
+          <p class="statement">The Spinal Surgery Outcomes Laboratory aims to improve patient outcomes through surgical insights and technological innovation.</p>
+          <p>Our research spans a broad range of spine pathologies and treatments, including lateral lumbar interbody fusion (LLIF), spine oncology, cervical spine fractures, and minimizing wound-healing complications after surgery. Current projects include automated classification of C1 fracture imaging and a comparison of IRRISEPT with standard of care for preventing wound complications.</p>
           <p>The laboratory is led by Rahul A. Sastry, MD, MPH, and collaborates with Jared Fridley, MD, of the University of Texas at Austin. Members include neurosurgery residents, medical and graduate students, research assistants, and undergraduate interns who work on retrospective cohort studies, database analyses, and case reports.</p>
         </div>
         <p class="see-more"><a href="people.html">Meet the lab members →</a></p>
@@ -257,6 +259,7 @@ footer .foot-text { display: grid; gap: 2px; text-align: right; }
       <section id="join" class="centered">
         <p class="eyebrow">Join and contact</p>
         <h2>Working with the lab</h2>
+        <p class="join-intro">To get involved, please reach out to Rahul Sastry at <a href="mailto:rahul.sastry@gmail.com">rahul.sastry@gmail.com</a> to discuss projects and onboarding.</p>
         <div class="join">
           <aside class="contact">
             <dl>
